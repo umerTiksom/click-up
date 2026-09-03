@@ -1,0 +1,10 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+.create-project-btn {
+  background-color: #dc3545;
+  transition: 0.2s;
+}
+
+.create-project-btn:hover {
+  background-color: #890808;
+}

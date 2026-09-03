@@ -1,0 +1,301 @@
+<div class="container-fluid p-4 ">
+
+  <div class="mb-4">
+    <h1 class="fw-bold text-danger">
+      Dashboard
+    </h1>
+
+    <p class="text-secondary">
+      Welcome back, <%= Current.user.name %>
+    </p>
+  </div>
+
+  <div class="row g-4 mb-4">
+
+    <div class="col-md-6 col-lg-3">
+
+      <div class="card border-1 shadow h-100">
+
+        <div class="card-body">
+
+          <div class="d-flex justify-content-between align-items-center">
+
+            <div>
+              <p class="text-secondary mb-1">
+                Total Projects
+              </p>
+
+              <h2 class="fw-bold mb-0">
+                <%= @total_projects %>
+              </h2>
+            </div>
+
+            <div class="bg-danger bg-opacity-10 rounded p-3">
+              <i class="bi bi-folder fs-3 text-danger"></i>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+    <div class="col-md-6 col-lg-3">
+
+      <div class="card border-1 shadow h-100">
+
+        <div class="card-body">
+
+          <div class="d-flex justify-content-between align-items-center">
+
+            <div>
+              <p class="text-secondary mb-1">
+                Total Tasks
+              </p>
+
+              <h2 class="fw-bold mb-0">
+                <%= @total_tasks %>
+              </h2>
+            </div>
+
+            <div class="bg-primary bg-opacity-10 rounded p-3">
+              <i class="bi bi-list-task fs-3 text-primary"></i>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+
+      <div class="card border-1 shadow h-100">
+
+        <div class="card-body">
+
+          <div class="d-flex justify-content-between align-items-center">
+
+            <div>
+              <p class="text-secondary mb-1">
+                Completed
+              </p>
+
+              <h2 class="fw-bold text-success mb-0">
+                <%= @completed_task %>
+              </h2>
+            </div>
+
+            <div class="bg-success bg-opacity-10 rounded p-3">
+              <i class="bi bi-check-circle fs-3 text-success"></i>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+
+      <div class="card border-1 shadow h-100">
+
+        <div class="card-body">
+
+          <div class="d-flex justify-content-between align-items-center">
+
+            <div>
+              <p class="text-secondary mb-1">
+                Pending
+              </p>
+
+              <h2 class="fw-bold text-warning mb-0">
+                <%= @pending_tasks %>
+              </h2>
+            </div>
+
+            <div class="bg-warning bg-opacity-10 rounded p-3">
+              <i class="bi bi-clock fs-3 text-warning"></i>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row g-3">
+
+    <div class="ms-lg-5 col-lg-10 my-4">
+      <div class="card border-1 shadow">
+
+        <div class="card-body">
+
+          <div class="d-flex justify-content-between align-items-center mb-3">
+
+            <h4 class="fw-bold mb-0">
+              Your Projects
+            </h4>
+
+            <%= link_to "View All",
+                        projects_path,
+                        class: "btn btn-sm btn-outline-danger" %>
+
+          </div>
+
+
+          <% if @projects.any? %>
+
+            <div class="list-group list-group-flush">
+
+              <% @projects.limit(5).each do |project| %>
+
+                <div class="list-group-item px-0">
+
+                  <div class="d-flex justify-content-between align-items-center">
+
+                    <div>
+
+                      <h6 class="fw-bold mb-1">
+                        <%= project.name %>
+                      </h6>
+
+                      <small class="text-secondary">
+                        <%= project.description %>
+                      </small>
+
+                    </div>
+
+
+                    <div class="text-end">
+
+                      <span class="badge bg-danger">
+                        <%= project.tasks.count %> Tasks
+                      </span>
+
+                      <div class="mt-2">
+
+                        <%= link_to "View",
+                                    project_path(project),
+                                    class: "btn btn-sm btn-outline-secondary" %>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              <% end %>
+
+            </div>
+
+          <% else %>
+
+            <div class="text-center py-3 ">
+
+              <i class="bi bi-folder-x fs-1 text-secondary"></i>
+
+              <p class="text-secondary mt-2">
+                You don't have any projects yet.
+              </p>
+
+              <%= link_to "Create Project",
+                          new_project_path,
+                          class: "btn btn-danger" %>
+
+            </div>
+
+          <% end %>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="col-lg-10  ms-lg-5">
+
+      <div class="card border-1 shadow">
+
+        <div class="card-body">
+
+          <h4 class="fw-bold mb-4">
+            Task Summary
+          </h4>
+
+
+
+
+          <div class="d-flex justify-content-between mb-3 ">
+
+            <span>
+              <i class="bi bi-check-circle text-success me-2"></i>
+              Completed
+            </span>
+
+            <strong>
+              <%= @completed_task %>
+            </strong>
+
+          </div>
+
+          <div class="d-flex justify-content-between mb-3">
+
+            <span>
+              <i class="bi bi-arrow-repeat text-primary me-2"></i>
+              In Progress
+            </span>
+
+            <strong>
+              <%= @in_progress_tasks %>
+            </strong>
+
+          </div>
+
+
+          <div class="d-flex justify-content-between mb-3">
+
+            <span>
+              <i class="bi bi-clock text-warning me-2"></i>
+              Pending
+            </span>
+
+            <strong>
+              <%= @pending_tasks %>
+            </strong>
+
+          </div>
+
+
+          <hr>
+
+
+          <%= link_to projects_path,
+                      class: "btn btn-danger w-100" do %>
+
+            <i class="bi bi-folder me-2"></i>
+            Manage Projects
+
+          <% end %>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

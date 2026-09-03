@@ -1,0 +1,196 @@
+<div class="container-fluid py-4 px-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+      <h1 class="fw-bold text-danger mb-1">
+        Tasks
+      </h1>
+
+      <p class="text-secondary mb-0">
+        Tasks for <strong><%= @project.name %></strong>
+      </p>
+    </div>
+
+    <%= link_to new_project_task_path(@project),
+                class: "btn btn-danger px-4" do %>
+      <i class="bi bi-plus-lg me-1"></i>
+      New Task
+    <% end %>
+
+  </div>
+
+  <% if @task.any? %>
+
+    <div class="card border-0 shadow-sm">
+
+      <div class="card-body p-0">
+
+        <div class="table-responsive">
+
+          <table class="table table-hover align-middle mb-0">
+
+            <thead class="table-light">
+            <tr>
+              <th class="px-4">ID</th>
+              <th>Tittle</th>
+              <th>Description</th>
+              <th>Priority</th>
+              <th>Status</th>
+              <th>Assigned To</th>
+              <th class="text-center">Actions</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <% @task.each_with_index do |task, index| %>
+
+              <tr>
+
+                <td class="px-4">
+                  <%= index + 1 %>
+                </td>
+
+                <td>
+                  <strong>
+                    <%= task.tittle %>
+                  </strong>
+                </td>
+
+                <td>
+                  <%= truncate(task.description, length: 60) %>
+                </td>
+                <td>
+
+                  <% if task.priority == "high" %>
+
+                      <span class="badge bg-danger">
+                        High
+                      </span>
+
+                  <% elsif task.priority == "medium" %>
+
+                      <span class="badge bg-warning text-dark">
+                        Medium
+                      </span>
+
+                  <% else %>
+
+                      <span class="badge bg-success">
+                        Low
+                      </span>
+
+                  <% end %>
+
+                </td>
+                <td>
+
+                  <% if task.status == "completed" %>
+
+                      <span class="badge bg-success">
+                        Completed
+                      </span>
+
+                  <% elsif task.status == "in-progress" %>
+
+                      <span class="badge bg-warning text-dark">
+                        In Progress
+                      </span>
+
+                  <% else %>
+
+                      <span class="badge bg-secondary">
+                        Pending
+                      </span>
+
+                  <% end %>
+
+                </td>
+                <td>
+
+                  <% if task.assign_to.present? %>
+
+                    <%= task.assign_to.name %>
+
+                  <% else %>
+
+                      <span class="text-secondary">
+                        Not Assigned
+                      </span>
+
+                  <% end %>
+
+                </td>
+                <td>
+
+                  <div class="d-flex justify-content-center gap-2">
+
+                    <%= link_to project_task_path(@project, task),
+                                class: "btn btn-sm btn-danger" do %>
+                      <i class="bi bi-eye"></i>
+                    <% end %>
+
+
+                    <%= link_to edit_project_task_path(@project, task),
+                                class: "btn btn-sm btn-outline-secondary" do %>
+                      <i class="bi bi-pencil"></i>
+                    <% end %>
+
+
+                    <%= button_to project_task_path(@project, task),
+                                  method: :delete,
+                                  data: {
+                                    turbo_confirm: "Are you sure you want to delete this task?"
+                                  },
+                                  class: "btn btn-sm btn-outline-danger" do %>
+                      <i class="bi bi-trash"></i>
+                    <% end %>
+
+                  </div>
+
+                </td>
+
+              </tr>
+
+            <% end %>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  <% else %>
+
+    <div class="card border-0 shadow-sm">
+
+      <div class="card-body text-center py-5">
+
+        <i class="bi bi-check2-square fs-1 text-secondary"></i>
+
+        <h4 class="fw-bold mt-3">
+          No Tasks Found
+        </h4>
+
+        <p class="text-secondary">
+          This project doesn't have any tasks yet.
+        </p>
+
+        <%= link_to new_project_task_path(@project),
+                    class: "btn btn-danger" do %>
+          <i class="bi bi-plus-lg me-1"></i>
+          Create First Task
+        <% end %>
+
+      </div>
+
+    </div>
+
+  <% end %>
+
+</div>

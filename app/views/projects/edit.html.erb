@@ -1,0 +1,79 @@
+<div class="container-fluid py-4 px-4">
+
+  <div class="mb-4">
+    <h1 class="fw-bold text-danger mb-1">
+      Edit Project
+    </h1>
+
+    <p class="text-secondary mb-0">
+      Update your project information.
+    </p>
+  </div>
+
+  <div class="card border-0 shadow-sm">
+
+    <div class="card-body p-4">
+
+      <%= form_with model: @project do |form| %>
+
+        <% if @project.errors.any? %>
+          <div class="alert alert-danger">
+
+            <h6 class="fw-bold">
+              Please fix the following errors:
+            </h6>
+
+            <ul class="mb-0">
+              <% @project.errors.full_messages.each do |message| %>
+                <li>
+                  <%= message %>
+                </li>
+              <% end %>
+            </ul>
+
+          </div>
+        <% end %>
+
+        <div class="mb-4">
+
+          <%= form.label :name,
+                         "Project Name",
+                         class: "form-label fw-semibold" %>
+
+          <%= form.text_field :name,
+                              class: "form-control",
+                              placeholder: "Enter project name" %>
+
+        </div>
+
+        <div class="mb-4">
+
+          <%= form.label :description,
+                         "Description",
+                         class: "form-label fw-semibold" %>
+
+          <%= form.text_area :description,
+                             class: "form-control",
+                             rows: 5,
+                             placeholder: "Enter project description" %>
+
+        </div>
+
+        <div class="d-flex gap-2">
+
+          <%= form.submit "Update Project",
+                          class: "btn btn-danger px-4 fw-semibold" %>
+
+          <%= link_to "Cancel",
+                      project_path(@project),
+                      class: "btn btn-outline-secondary px-4" %>
+
+        </div>
+
+      <% end %>
+
+    </div>
+
+  </div>
+
+</div>

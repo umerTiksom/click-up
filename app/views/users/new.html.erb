@@ -1,0 +1,111 @@
+
+<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center ">
+
+  <div class="container">
+    <div class="row justify-content-center ">
+
+      <div class="col-12 col-sm-9 col-md-8 col-lg-7 col-xl-6">
+
+        <div class="card shadow-lg border-2 rounded-4">
+
+          <div class="card-body p-4 p-md-5">
+
+            <div class="text-center mb-4">
+              <h2 class="fw-bold text-danger mb-2">
+                Welcome to Click Up
+              </h2>
+
+              <p class="text-muted mb-0">
+                Create your account
+              </p>
+            </div>
+
+            <% if @user.errors.any? %>
+              <div class="alert alert-danger" role="alert">
+
+                <h6 class="fw-bold mb-2">
+                  Please fix the following errors:
+                </h6>
+
+                <ul class="mb-0 ps-3">
+                  <% @user.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
+
+              </div>
+            <% end %>
+
+            <%= form_with model: @user, url: signup_path do |form| %>
+
+              <div class="mb-3">
+                <%= form.label :name,
+                               "Name",
+                               class: "form-label fw-semibold" %>
+
+                <%= form.text_field :name,
+                                    class: "form-control form-control-lg",
+                                    placeholder: "Enter your name",
+                                    autocomplete: "name" %>
+              </div>
+
+              <div class="mb-3">
+                <%= form.label :email_address,
+                               "Email",
+                               class: "form-label fw-semibold" %>
+
+                <%= form.email_field :email_address,
+                                     class: "form-control form-control-lg",
+                                     placeholder: "Enter your email",
+                                     autocomplete: "email" %>
+              </div>
+
+              <div class="mb-3">
+                <%= form.label :password,
+                               "Password",
+                               class: "form-label fw-semibold" %>
+
+                <%= form.password_field :password,
+                                        class: "form-control form-control-lg",
+                                        placeholder: "Enter your password",
+                                        autocomplete: "new-password" %>
+              </div>
+
+              <div class="mb-4">
+                <%= form.label :password_confirmation,
+                               "Confirm Password",
+                               class: "form-label fw-semibold" %>
+
+                <%= form.password_field :password_confirmation,
+                                        class: "form-control form-control-lg",
+                                        placeholder: "Confirm your password",
+                                        autocomplete: "new-password" %>
+              </div>
+
+              <div class="d-grid">
+                <%= form.submit "Sign Up",
+                                class: "btn btn-danger btn-lg rounded-3" %>
+              </div>
+
+            <% end %>
+
+            <div class="text-center mt-4">
+              <p class="text-muted mb-0">
+                Already have an account?
+
+                <%= link_to "Sign In",
+                            login_path,
+                            class: "text-danger fw-semibold text-decoration-none"
+                %>
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+

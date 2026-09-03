@@ -1,0 +1,42 @@
+<div class="container-fluid  text-center mt-1 ">
+  <h1 class=" fw-bold text-white fs-1 bg-danger p-3">Projects Details</h1>
+<div class="container p-5">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+      <h1 class="text-danger">
+        <%= @project.name %>
+      </h1>
+
+      <p class="text-secondary me-5">
+        <%= @project.description %>
+      </p>
+    </div>
+
+    <div>
+
+      <%= link_to project_tasks_path(@project),
+                  class: "btn btn-outline-danger me-2" do %>
+
+        <i class="bi bi-list-task me-2"></i>
+        Tasks List
+
+      <% end %>
+
+
+      <%= link_to new_project_task_path(@project),
+                  class: "btn btn-danger" do %>
+
+        <i class="bi bi-file-earmark-plus me-2"></i>
+        New Task
+
+      <% end %>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>

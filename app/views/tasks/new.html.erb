@@ -1,0 +1,134 @@
+<div class="container-fluid py-4 px-4">
+
+  <div class="mb-4">
+    <h1 class="fw-bold text-danger mb-1">
+      Create New Task
+    </h1>
+
+    <p class="text-secondary mb-0">
+      Add a new task to <strong><%= @project.name %></strong>
+    </p>
+  </div>
+
+  <div class="card border-0 shadow-sm">
+    <div class="card-body p-4">
+
+      <%= form_with model: [@project, @task] do |form| %>
+
+        <% if @task.errors.any? %>
+          <div class="alert alert-danger">
+            <h6 class="fw-bold">
+              Please fix the following errors:
+            </h6>
+
+            <ul class="mb-0">
+              <% @task.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="mb-4">
+          <%= form.label :tittle,
+                         "Task Title",
+                         class: "form-label fw-semibold" %>
+
+          <%= form.text_field :tittle,
+                              class: "form-control",
+                              placeholder: "Enter task title" %>
+        </div>
+
+        <div class="mb-4">
+          <%= form.label :description,
+                         "Description",
+                         class: "form-label fw-semibold" %>
+
+          <%= form.text_area :description,
+                             class: "form-control",
+                             rows: 5,
+                             placeholder: "Enter task description" %>
+        </div>
+
+        <div class="mb-4">
+          <%= form.label :priority,
+                         "Priority",
+                         class: "form-label fw-semibold d-block" %>
+
+          <div class="d-flex gap-4">
+
+            <div class="form-check">
+              <%= form.radio_button :priority,
+                                    "high",
+                                    class: "form-check-input" %>
+
+              <%= form.label :priority_high,
+                             "High",
+                             class: "form-check-label" %>
+            </div>
+
+            <div class="form-check">
+              <%= form.radio_button :priority,
+                                    "medium",
+                                    class: "form-check-input" %>
+
+              <%= form.label :priority_medium,
+                             "Medium",
+                             class: "form-check-label" %>
+            </div>
+
+            <div class="form-check">
+              <%= form.radio_button :priority,
+                                    "low",
+                                    class: "form-check-input" %>
+
+              <%= form.label :priority_low,
+                             "Low",
+                             class: "form-check-label" %>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <%= form.label :status,
+                         "Status",
+                         class: "form-label fw-semibold" %>
+
+          <%= form.select :status,
+                          [
+                            ["Pending", "pending"],
+                            ["In Progress", "in-progress"],
+                            ["Completed", "completed"]
+                          ],
+                          { prompt: "Select status" },
+                          class: "form-select" %>
+        </div>
+
+        <div class="mb-4 ">
+            <%= form.label :assign_to_id, "Assign Task", class: "form-label fw-semibold "%>
+            <%= form.select :assign_to_id, [
+              ["Assign to me (#{Current.user.name})", Current.user.id]
+            ]+ @users .reject { |user| user.id == Current.user.id }
+              .map { |user| [user.name] }, {
+              prompt: "Select Task Owner"
+            }, class: "form-select" %>
+        </div>
+
+        <div class="d-flex gap-2 ">
+
+          <%= form.submit "Create Task",
+                          class: "btn btn-danger px-4 fw-semibold flex-fill" %>
+
+          <%= link_to "Cancel",
+                      project_path(@project),
+                      class: "btn btn-outline-secondary px-4 flex-fill" %>
+
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+
+</div>

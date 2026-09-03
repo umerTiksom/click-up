@@ -1,0 +1,94 @@
+<nav class="bg-white p-3 d-flex flex-column border-3 shadow"
+     style="width: 260px; min-height: 100vh;">
+
+  <!-- Logo -->
+  <div class="text-center mb-4">
+
+    <%= link_to home_path,
+                class: "text-danger text-decoration-none fw-bold fs-3" do %>
+      Click Up
+    <% end %>
+
+  </div>
+
+  <!-- User -->
+  <div class="text-center border-bottom border-secondary pb-4 mb-4">
+
+    <div class="rounded-circle bg-danger d-flex align-items-center justify-content-center mx-auto mb-2"
+         style="width: 55px; height: 55px;">
+
+      <span class="fw-bold fs-4 text-white">
+        <%= Current.user.name.first.upcase %>
+      </span>
+
+    </div>
+
+    <h6 class="mb-0 text-danger">
+      <%= Current.user.name %>
+    </h6>
+
+    <small class="text-secondary">
+      <%= Current.user.email_address %>
+    </small>
+
+  </div>
+
+  <!-- Navigation -->
+  <ul class="nav nav-pills flex-column gap-2">
+
+    <!-- Dashboard -->
+    <li class="nav-item">
+
+      <%= link_to home_path,
+                  class: "nav-link text-danger" do %>
+
+        <i class="bi bi-speedometer2 me-2"></i>
+        Dashboard
+
+      <% end %>
+
+    </li>
+
+    <!-- Projects -->
+    <li class="nav-item">
+
+      <%= link_to projects_path,
+                  class: "nav-link text-danger" do %>
+
+        <i class="bi bi-folder me-2"></i>
+        Projects
+
+      <% end %>
+
+    </li>
+
+    <!-- New Project -->
+    <li class="nav-item">
+
+      <%= link_to new_project_path,
+                  class: "nav-link text-danger" do %>
+
+        <i class="bi bi-folder-plus me-2"></i>
+        New Project
+
+      <% end %>
+
+    </li>
+
+  </ul>
+
+  <!-- Logout -->
+  <div class="mt-auto pt-4">
+
+    <%= button_to logout_path,
+                  method: :delete,
+                  class: "btn btn-danger w-100" do %>
+
+      <i class="bi bi-box-arrow-right me-2"></i>
+      Logout
+
+    <% end %>
+
+  </div>
+
+</nav>
