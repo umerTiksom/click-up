@@ -1,0 +1,31 @@
+.nav-item .nav-link:hover
+{
+    background-color: #d30001;
+    /*font-size: x-large;*/
+    color: white !important;
+
+}
+@media (max-width: 790px) {
+    .nav-item .nav-link
+    {
+        font-size: xx-large;
+    }
+    .task-start
+    {
+        display: flex;
+        align-items: start;
+        justify-content: start;
+
+    }
+
+
+}
+
+.offcanvas {
+    width: 80px !important;
+
+}
+.toggle-btn
+{
+    margin-top: 13px !important;
+}

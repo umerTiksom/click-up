@@ -1,6 +1,9 @@
 class ProjectsController < ApplicationController
   def index
     @project = Current.user.projects
+    if params[:search].present?
+      @project=@project.where("name ILIKE ?","#{params[:search]}%")
+    end
   end
   def create
     @project = Current.user.projects.new(project_params)

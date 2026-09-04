@@ -1,7 +1,7 @@
-<nav class="bg-white p-3 d-flex flex-column border-3 shadow"
+
+<nav class="p-3 d-none d-md-flex flex-column border-3 shadow bg-white"
      style="width: 260px; min-height: 100vh;">
 
-  <!-- Logo -->
   <div class="text-center mb-4">
 
     <%= link_to home_path,
@@ -11,7 +11,6 @@
 
   </div>
 
-  <!-- User -->
   <div class="text-center border-bottom border-secondary pb-4 mb-4">
 
     <div class="rounded-circle bg-danger d-flex align-items-center justify-content-center mx-auto mb-2"
@@ -33,52 +32,32 @@
 
   </div>
 
-  <!-- Navigation -->
-  <ul class="nav nav-pills flex-column gap-2">
+  <ul class="nav flex-column gap-2">
 
-    <!-- Dashboard -->
     <li class="nav-item">
-
-      <%= link_to home_path,
-                  class: "nav-link text-danger" do %>
-
+      <%= link_to home_path, class: "nav-link text-danger" do %>
         <i class="bi bi-speedometer2 me-2"></i>
         Dashboard
-
       <% end %>
-
     </li>
 
-    <!-- Projects -->
     <li class="nav-item">
-
-      <%= link_to projects_path,
-                  class: "nav-link text-danger" do %>
-
+      <%= link_to projects_path, class: "nav-link text-danger" do %>
         <i class="bi bi-folder me-2"></i>
         Projects
-
       <% end %>
-
     </li>
 
-    <!-- New Project -->
     <li class="nav-item">
-
-      <%= link_to new_project_path,
-                  class: "nav-link text-danger" do %>
-
+      <%= link_to new_project_path, class: "nav-link text-danger" do %>
         <i class="bi bi-folder-plus me-2"></i>
         New Project
-
       <% end %>
-
     </li>
 
   </ul>
 
-  <!-- Logout -->
-  <div class="mt-auto pt-4">
+  <div class="mt-auto">
 
     <%= button_to logout_path,
                   method: :delete,
@@ -92,3 +71,82 @@
   </div>
 
 </nav>
+
+<div class="offcanvas offcanvas-start d-md-none"
+     tabindex="-1"
+     id="mobileNavbar">
+
+  <div class="offcanvas-header justify-content-between">
+
+    <%= link_to home_path,
+                class: "text-decoration-none" do %>
+
+      <div class="rounded-circle bg-danger
+                  d-flex align-items-center justify-content-center"
+           style="width: 55px; height: 55px;">
+
+        <span class="fw-bold fs-4 text-white">
+          <%= Current.user.name.first.upcase %>
+        </span>
+
+      </div>
+
+    <% end %>
+
+
+  </div>
+
+  <div class="offcanvas-body">
+
+    <ul class="nav flex-column gap-3">
+      <li class="nav-item">
+
+        <%= link_to home_path,
+                    class: "nav-link text-danger text-center fs-4" do %>
+
+          <i class="bi bi-speedometer2"></i>
+
+        <% end %>
+
+      </li>
+
+      <li class="nav-item">
+
+        <%= link_to projects_path,
+                    class: "nav-link text-danger text-center fs-4" do %>
+
+          <i class="bi bi-folder"></i>
+
+        <% end %>
+
+      </li>
+
+      <li class="nav-item">
+
+        <%= link_to new_project_path,
+                    class: "nav-link text-danger text-center fs-4" do %>
+
+          <i class="bi bi-folder-plus"></i>
+
+        <% end %>
+
+      </li>
+
+    </ul>
+
+    <div class="mt-md-auto mt-4 text-center">
+
+      <%= button_to logout_path,
+                    method: :delete,
+                    class: "btn btn-danger",
+                    title: "Logout" do %>
+
+        <i class="bi bi-box-arrow-right fs-4"></i>
+
+      <% end %>
+
+    </div>
+
+  </div>
+
+</div>

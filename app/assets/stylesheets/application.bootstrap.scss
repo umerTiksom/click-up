@@ -1,5 +1,6 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+$font-family-sans-serif: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 .create-project-btn {
   background-color: #dc3545;
   transition: 0.2s;
@@ -7,4 +8,29 @@
 
 .create-project-btn:hover {
   background-color: #890808;
+}
+
+nav
+{
+  background-color: #0dcaf0;
+}
+
+@media (max-width: 769px) {
+
+  .desktop-navbar {
+    display: none !important;
+  }
+
+  .mobile-menu-button {
+    display: block !important;
+  }
+
+}
+
+@media (min-width: 770px) {
+
+  .mobile-menu-button {
+    display: none !important;
+  }
+
 }

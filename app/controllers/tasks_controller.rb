@@ -3,6 +3,14 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   def index
     @task = @project.tasks
+
+    if params[:priority].present?
+      @task= @task.where(priority: params[:priority])
+    end
+
+    if params[:status].present?
+      @task = @task.where(status: params[:status])
+    end
   end
   def new
     @task = @project.tasks.new
@@ -53,6 +61,7 @@ class TasksController < ApplicationController
   end
   def set_project
     @project = Current.user.projects.find(params[:project_id])
+
   end
   def set_task
     @task = @project.tasks.find(params[:id])

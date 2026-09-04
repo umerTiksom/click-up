@@ -1,42 +1,57 @@
-<div class="container-fluid  text-center mt-1 ">
-  <h1 class=" fw-bold text-white fs-1 bg-danger p-3">Projects Details</h1>
-<div class="container p-5">
 
-  <div class="d-flex justify-content-between align-items-center mb-4">
+<div class="container-fluid text-center mt-1 px-2 px-md-3">
 
-    <div>
-      <h1 class="text-danger">
-        <%= @project.name %>
-      </h1>
+  <h1 class="fw-bold text-white fs-1 bg-danger p-3 mb-0">
+    Projects Details
+  </h1>
 
-      <p class="text-secondary me-5">
-        <%= @project.description %>
-      </p>
-    </div>
+  <div class="container py-4 py-md-5 ">
 
-    <div>
+    <div class="d-flex justify-content-between align-items-center
+                mb-4
+                flex-column flex-md-row
+                gap-4">
 
-      <%= link_to project_tasks_path(@project),
-                  class: "btn btn-outline-danger me-2" do %>
+      <div class="w-100 text-center text-md-start">
 
-        <i class="bi bi-list-task me-2"></i>
-        Tasks List
+        <h1 class="text-danger fs-2 fs-md-1 mb-3">
+          <%= @project.name %>
+        </h1>
 
-      <% end %>
+        <p class="text-secondary mb-0 me-md-5">
+          <%= @project.description %>
+        </p>
 
+      </div>
 
-      <%= link_to new_project_task_path(@project),
-                  class: "btn btn-danger" do %>
+      <div class="d-flex
+                  flex-column flex-sm-row
+                  justify-content-center
+                  align-items-stretch
+                  align-items-sm-center
+                  gap-2
+                  w-100 w-md-auto ">
 
-        <i class="bi bi-file-earmark-plus me-2"></i>
-        New Task
+        <%= link_to project_tasks_path(@project),
+                    class: "btn btn-outline-danger" do %>
 
-      <% end %>
+          <i class="bi bi-list-task me-2"></i>
+          Tasks List
+
+        <% end %>
+
+        <%= link_to new_project_task_path(@project),
+                    class: "btn btn-danger" do %>
+
+          <i class="bi bi-file-earmark-plus me-2"></i>
+          New Task
+
+        <% end %>
+
+      </div>
 
     </div>
 
   </div>
-
-</div>
 
 </div>
