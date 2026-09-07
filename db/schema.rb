@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_02_064627) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_07_072436) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -41,8 +41,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_02_064627) do
     t.string "status"
     t.string "tittle"
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["assign_to_id"], name: "index_tasks_on_assign_to_id"
     t.index ["projects_id"], name: "index_tasks_on_projects_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,5 +59,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_02_064627) do
   add_foreign_key "projects", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "tasks", "projects", column: "projects_id"
+  add_foreign_key "tasks", "users"
   add_foreign_key "tasks", "users", column: "assign_to_id"
 end
