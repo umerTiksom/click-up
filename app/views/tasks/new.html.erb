@@ -110,7 +110,7 @@
             <%= form.select :assign_to_id, [
               ["Assign to me (#{Current.user.name})", Current.user.id]
             ]+ @users .reject { |user| user.id == Current.user.id }
-              .map { |user| [user.name] }, {
+              .map { |user| [user.name,user.id] }, {
               prompt: "Select Task Owner"
             }, class: "form-select" %>
         </div>

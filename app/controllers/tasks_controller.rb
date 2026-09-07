@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_project
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :check_project_owner, only: [:new, :create]
   def index
     @task = @project.tasks
 
@@ -60,10 +61,16 @@ class TasksController < ApplicationController
     )
   end
   def set_project
-    @project = Current.user.projects.find(params[:project_id])
+    @project = Project.find(params[:project_id])
 
   end
   def set_task
     @task = @project.tasks.find(params[:id])
+  end
+  def check_project_owner
+    unless @project.user == Current.user
+      redirect_to project_path(@project),
+                  alert: "You are not authorized to create tasks."
+    end
   end
 end

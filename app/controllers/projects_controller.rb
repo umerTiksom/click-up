@@ -1,8 +1,15 @@
 class ProjectsController < ApplicationController
   def index
-    @project = Current.user.projects
+    @project = Project
+                 .left_joins(:tasks)
+                 .where(
+                   "projects.user_id = :user_id OR tasks.assign_to_id = :user_id",
+                   user_id: Current.user.id
+                 )
+                 .distinct
+
     if params[:search].present?
-      @project=@project.where("name ILIKE ?","#{params[:search]}%")
+      @project = @project.where("projects.name ILIKE ?", "#{params[:search]}%")
     end
   end
   def create
@@ -15,7 +22,18 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Current.user.projects.find(params[:id])
+    @project = Project
+                 .left_joins(:tasks)
+                 .where(
+                   "projects.id = :project_id AND
+       (projects.user_id = :user_id OR tasks.assign_to_id = :user_id)",
+                   project_id: params[:id],
+                   user_id: Current.user.id
+                 )
+                 .distinct
+                 .first!
+
+    @tasks = @project.tasks
   end
   def new
     @project = Current.user.projects.new
