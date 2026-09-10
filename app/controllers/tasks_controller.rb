@@ -44,7 +44,7 @@ class TasksController < ApplicationController
   def update
     authorize @task
     if @task.update(task_params)
-      redirect_to project_task_path(@project, @task), notice: "Task updated successfully."
+      redirect_to project_tasks_path(@project), notice: "Task updated successfully."
     else
       @users = User.all
       render :edit, status: :unprocessable_entity

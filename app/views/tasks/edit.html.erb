@@ -28,6 +28,7 @@
           </ul>
         </div>
         <% end %>
+        <% if policy(@task).destroy? %>
         <div>
           <%=form.label :tittle, "Task Tittle",class: "form-label fw-semibold text-black"%>
           <%= form.text_field :tittle,class: 'form-control'%>
@@ -71,9 +72,54 @@
 
           },class:"mt-2 d-block p-2 w-100 form-select"%>
         </div>
-        <%= form.submit "Update task", class: "btn btn-danger px-4 fw-semibold mt-5"%>
-      <% end %>
+        <% else %>
+          <div >
+            <%=form.label :tittle, "Task Tittle",class: "form-label fw-semibold text-black"%>
+            <%= form.text_field :tittle, disabled:true ,class: 'form-control'%>
+          </div>
+          <div class="mt-2">
+            <%= form.label :description, "Task Description",class: "form-label fw-semibold mt-4"%>
+            <%= form.text_area :description,disabled:true , class: "form-control"%>
+          </div>
+          <div class="mt-4 ">
+            <%= form.label :priority, "Priority", class:"form-label fw-semibold d-block"%>
+            <div class="d-flex gap-3 mt-2">
+              <div class="form-check">
+                <%= form.radio_button :priority, "high", disabled:true,class: "form-check-input"%>
+                <%= form.label :priority_high, "High", class: "form-check-label"%>
+              </div>
+              <div class="form-check">
+                <%= form.radio_button :priority, "medium", disabled:true,class: "form-check-input"%>
+                <%= form.label  "Medium", class: "form-check-label"%>
+              </div>
+              <div class="form-check">
+                <%= form.radio_button :priority, "low", disabled:true,class: "form-check-input"%>
+                <%= form.label "Low",class:"form-check-label"%>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4">
+            <%= form.label :status, "Status", class: "form-label fw-semibold"%>
+            <%= form.select :status, [["Pending","pending"],["In Progress", "in-progress"],["Completed","completed"]],
+                            {
+                              prompt:"Select status"
+                            }, class: "form-select"
+            %>
+          </div>
 
-    </div>
+          <div class="mt-4">
+            <%= form.label :assign_to_id, "Assign Task", class:"form-label fw-semibold d-block"%>
+            <%= form.select :assign_to_id, [["Assign to me (#{Current.user.name})",Current.user.id]]+
+              @users.reject { |user| user.id == Current.user.id }
+                    .map { |user| [user.name,user.id]  },{
+                              prompt:"Select Task owner",
+
+                            },disabled:true,class:"mt-2 d-block p-2 w-100 form-select"%>
+          </div>
+        <% end %>
+        <%= form.submit "Update task", class: "btn btn-danger px-4 fw-semibold mt-5"%>
+
+         </div>
+      <% end %>
   </div>
 </div>
