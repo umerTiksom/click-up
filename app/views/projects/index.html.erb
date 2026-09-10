@@ -1,6 +1,19 @@
 
 <div class="container-fluid py-4 px-4">
+  <% if flash.any? %>
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-<%= type == 'notice' ? 'success' : 'danger' %> alert-dismissible fade show"
+           role="alert">
 
+        <%= msg %>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"></button>
+      </div>
+    <% end %>
+  <% end %>
   <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
       <h1 class="fw-bold text-danger mb-1">Projects</h1>

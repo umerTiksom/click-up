@@ -3,6 +3,9 @@ class ProjectPolicy < ApplicationPolicy
     user_can_access_project?
   end
 
+  def destroy?
+    owner?
+  end
   def edit?
     owner?
   end

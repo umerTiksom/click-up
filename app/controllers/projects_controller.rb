@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Current.user.projects.new(project_params)
     if @project.save
-      redirect_to home_path, notice: "Project created successfully."
+      redirect_to projects_path, notice: "Project created successfully."
     else
       render :new, status: :unprocessable_entity
     end
@@ -41,14 +41,6 @@ class ProjectsController < ApplicationController
   def edit
     @project = Project.find(params[:id])
     authorize @project
-  end
-  def toggle_active
-    @project = Project.find(params[:id])
-    authorize @project, :update?
-
-    @project.update(active: !@project.active?)
-
-    redirect_to projects_path
   end
   def update
     @project = Current.user.projects.find(params[:id])
