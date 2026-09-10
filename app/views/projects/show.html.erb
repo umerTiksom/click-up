@@ -41,7 +41,7 @@
         <% end %>
 
         <%= link_to new_project_task_path(@project),
-                    class: "btn btn-danger" do %>
+                    aria:{disabled:true},tabindex:(policy(@project).edit? ?nil:-1),class: "btn btn-danger #{'disabled' unless policy(@project).edit?}" do %>
 
           <i class="bi bi-file-earmark-plus me-2"></i>
           New Task
