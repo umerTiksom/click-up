@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get "user/create"
   resource :session
   resources :projects do
+    member do
+      patch :toggle_active
+    end
     resources :tasks
   end
   resources :passwords, param: :token

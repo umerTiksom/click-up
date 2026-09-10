@@ -32,19 +32,27 @@ class ProjectsController < ApplicationController
                  )
                  .distinct
                  .first!
-
+    authorize @project
     @tasks = @project.tasks
   end
   def new
     @project = Current.user.projects.new
   end
   def edit
-    @project = Current.user.projects.find(params[:id])
+    @project = Project.find(params[:id])
+    authorize @project
   end
+  def toggle_active
+    @project = Project.find(params[:id])
+    authorize @project, :update?
 
+    @project.update(active: !@project.active?)
+
+    redirect_to projects_path
+  end
   def update
     @project = Current.user.projects.find(params[:id])
-
+    authorize @project
     if @project.update(project_params)
       redirect_to project_path(@project), notice: "Project updated successfully."
     else
@@ -52,7 +60,8 @@ class ProjectsController < ApplicationController
     end
   end
   def destroy
-    @project = Current.user.projects.find(params[:id])
+    @project = Project.find(params[:id])
+    authorize @project
     @project.destroy
 
     redirect_to projects_path, notice: "Project deleted successfully."

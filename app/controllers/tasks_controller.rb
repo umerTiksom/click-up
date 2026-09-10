@@ -18,8 +18,12 @@ class TasksController < ApplicationController
     @users=User.all
   end
   def create
-    @task = @project.tasks.new(task_params)
+    @project = Project.find(params[:project_id])
 
+    @task = @project.tasks.new
+    authorize @task, :create?
+
+    @task.assign_attributes(task_params)
     if @task.save
       redirect_to project_path(@project),
                   notice: "Task created successfully."
@@ -29,22 +33,26 @@ class TasksController < ApplicationController
     end
   end
   def show
-    @task = @project.tasks.find(params[:id])
+    authorize @task
   end
 
   def edit
+    authorize @task
     @users=User.all
   end
 
   def update
+    authorize @task
     if @task.update(task_params)
       redirect_to project_task_path(@project, @task), notice: "Task updated successfully."
     else
+      @users = User.all
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
+    authorize @task
     @task.destroy
     redirect_to project_path(@project),
                 notice: "Task deleted successfully."
@@ -52,13 +60,17 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(
-      :tittle,
-      :description,
-      :priority,
-      :status,
-      :assign_to_id
-    )
+    if TaskPolicy.new(Current.user, @task).admin?
+      params.require(:task).permit(
+        :tittle,
+        :description,
+        :priority,
+        :status,
+        :assign_to_id
+      )
+    else
+      params.require(:task).permit(:status)
+    end
   end
   def set_project
     @project = Project.find(params[:project_id])

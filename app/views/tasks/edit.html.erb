@@ -20,7 +20,7 @@
         <div class="alert alert-danger">
           <h5>Please fix these errors before update</h5>
           <ul>
-            <% @task.errrors.full_messages.each do |msg| %>
+            <% @task.errors.full_messages.each do |msg| %>
             <li>
               <%= msg %>
             </li>
@@ -65,8 +65,8 @@
         <div class="mt-4">
           <%= form.label :assign_to_id, "Assign Task", class:"form-label fw-semibold d-block"%>
           <%= form.select :assign_to_id, [["Assign to me (#{Current.user.name})",Current.user.id]]+
-          @users .reject { |user| user.id == Current.user.id }
-            .map { |user| [user.name]  },{
+          @users.reject { |user| user.id == Current.user.id }
+            .map { |user| [user.name,user.id]  },{
             prompt:"Select Task owner",
 
           },class:"mt-2 d-block p-2 w-100 form-select"%>
