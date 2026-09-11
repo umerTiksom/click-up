@@ -54,7 +54,7 @@ class TasksController < ApplicationController
   def destroy
     authorize @task
     @task.destroy
-    redirect_to project_path(@project),
+    redirect_to project_tasks_path(@project),
                 notice: "Task deleted successfully."
   end
 

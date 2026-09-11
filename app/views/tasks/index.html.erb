@@ -267,7 +267,7 @@
 
                       <% end %>
 
-                      <%= button_to project_task_path(@project, task),
+                      <%= button_to project_tasks_path(@project, task),
                                     method: :delete,
                                     title: "delete task",
                                     aria:{disabled: true},tabindex: (policy(task).update? ? nil : -1),
