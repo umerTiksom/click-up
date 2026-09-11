@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
                  .distinct
 
     if params[:search].present?
-      @project = @project.where("projects.name ILIKE ?", "#{params[:search]}%")
+      @project = @project.where("projects.name ILIKE ?", "%#{params[:search]}%")
     end
   end
   def create

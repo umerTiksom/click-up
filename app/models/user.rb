@@ -8,6 +8,8 @@ class User < ApplicationRecord
            foreign_key: :assigned_to_id,
            dependent: :nullify
   validates :name, presence: true
-  validates :email_address, presence: true, uniqueness: {case_sensitive: false}
+  validates :password_digest, presence: true,length: {minimum: 6, maximum: 20}, on: :create
+  validates :email_address, presence: true, uniqueness: {case_sensitive: false}, format:{with: URI::MailTo::EMAIL_REGEXP}
   normalizes :email_address, with: ->(e) { e.strip.downcase }
+
 end
