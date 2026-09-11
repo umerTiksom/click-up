@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
+  get "profile/show"
+  get "profile/edit"
   get "users/new"
   get "users/create"
   get "user/new"
   get "user/create"
   resource :session
   resources :projects do
-    member do
-      patch :toggle_active
-    end
     resources :tasks
   end
+  resource :profile, only:[:show, :edit, :update]
   resources :passwords, param: :token
   get "/signup", to: "users#new"
   post "/signup", to: "users#create"
