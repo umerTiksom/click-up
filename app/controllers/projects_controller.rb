@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
                    "projects.user_id = :user_id OR tasks.assign_to_id = :user_id",
                    user_id: Current.user.id
                  )
-                 .distinct
+                 .distinct.order(created_at: :asc)
 
     if params[:search].present?
       @project = @project.search_project(params[:search])
