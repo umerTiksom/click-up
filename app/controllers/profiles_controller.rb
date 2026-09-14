@@ -1,4 +1,4 @@
-class ProfileController < ApplicationController
+class ProfilesController < ApplicationController
   def show
     @user = Current.user
   end
@@ -10,9 +10,13 @@ class ProfileController < ApplicationController
   def update
     @user = Current.user
     if @user.update(profile_params)
-      redirect_to home_path, notice: 'Profile was successfully updated...'
+      redirect_to profile_path, notice: 'Profile was successfully updated...'
     else
     render :edit, status: :unprocessable_entity
     end
+  end
+  private
+  def profile_params
+    params.require(:user).permit(:name,:email_address)
   end
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get "profile/show"
-  get "profile/edit"
+  get "profiles/show"
+  get "profiles/edit"
   get "users/new"
   get "users/create"
   get "user/new"
@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   resources :projects do
     resources :tasks
   end
-  resource :profile, only:[:show, :edit, :update]
+
+  resource :profile, only: [:show, :edit, :update]
   resources :passwords, param: :token
   get "/signup", to: "users#new"
   post "/signup", to: "users#create"

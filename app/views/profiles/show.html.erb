@@ -1,0 +1,91 @@
+<div class="container-fluid p-4  min-vh-100">
+
+  <div class="mb-4">
+    <h1 class="fw-bold text-danger mb-1 text-danger">My Profile</h1>
+    <p class="text-secondary mb-0">
+      View and manage your account information.
+    </p>
+  </div>
+
+  <% if flash.any? %>
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-<%= type == 'notice' ? 'success' : 'danger' %> alert-dismissible fade show"
+           role="alert">
+        <%= msg %>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"></button>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="card border-0 shadow w-100 " >
+    <div class="card-body p-4">
+
+      <div class="d-flex align-items-center mb-4 flex-column flex-md-row">
+
+        <div class="rounded-circle bg-danger text-white
+                    d-flex align-items-center justify-content-center p-1 me-3"
+             style="width: 80px; height: 80px; font-size: 32px;">
+          <%= @user.name.first.upcase %>
+        </div>
+
+        <div>
+          <h3 class="fw-bold mb-1 fs-2 ">
+            <%= @user.name %>
+          </h3>
+
+          <p class="text-black-50 mb-0">
+            <%= @user.email_address %>
+          </p>
+        </div>
+
+      </div>
+      <div class="row g-4">
+
+        <div class="col-md-6">
+          <label class="text-secondary small">
+            Full Name
+          </label>
+
+          <p class="fw-semibold mb-0">
+            <%= @user.name %>
+          </p>
+        </div>
+
+        <div class="col-md-6">
+          <label class="text-secondary small">
+            Email Address
+          </label>
+
+          <p class="fw-semibold mb-0">
+            <%= @user.email_address %>
+          </p>
+        </div>
+
+        <div class="col-md-6">
+          <label class="text-secondary small">
+            Account Created
+          </label>
+
+          <p class="fw-semibold mb-0">
+            <%= @user.created_at.strftime("%d %B %Y") %>
+          </p>
+        </div>
+
+      </div>
+
+      <div class="mt-4">
+        <%= link_to edit_profile_path,
+                    class: "btn btn-danger px-4" do %>
+          <i class="bi bi-pencil me-2"></i>
+          Edit Profile
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+
+</div>

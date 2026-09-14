@@ -1,0 +1,66 @@
+<div class="container-fluid py-4 px-4">
+
+  <div class="mb-4">
+    <h1 class="fw-bold text-danger mb-1">
+      Edit Profile
+    </h1>
+
+    <p class="text-secondary mb-0">
+      Update your account information.
+    </p>
+  </div>
+
+  <div class="card border-0 shadow-sm">
+    <div class="card-body p-4">
+
+      <% if @user.errors.any? %>
+        <div class="alert alert-danger">
+          <% @user.errors.full_messages.each do |error| %>
+            <div><%= error %></div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <%= form_with model: @user,
+                    url: profile_path,
+                    method: :patch do |form| %>
+
+        <div class="mb-3">
+          <%= form.label :name,
+                         "Full Name",
+                         class: "form-label fw-semibold" %>
+
+          <%= form.text_field :name,
+                              class: "form-control",
+                              placeholder: "Enter your name",
+                              required: true %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :email_address,
+                         "Email Address",
+                         class: "form-label fw-semibold" %>
+
+          <%= form.email_field :email_address,
+                               class: "form-control",
+                               placeholder: "Enter your email",
+                               required: true %>
+        </div>
+
+        <div class="d-flex gap-2 mt-4">
+
+          <%= form.submit "Save Changes",
+                          class: "btn btn-danger px-4" %>
+
+          <%= link_to "Cancel",
+                      profile_path,
+                      class: "btn btn-outline-secondary px-4" %>
+
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+
+</div>

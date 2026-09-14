@@ -12,16 +12,16 @@
   </div>
 
   <div class="text-center border-bottom border-secondary pb-4 mb-4">
-
-    <div class="rounded-circle bg-danger d-flex align-items-center justify-content-center mx-auto mb-2"
-         style="width: 55px; height: 55px;">
-
-      <span class="fw-bold fs-4 text-white">
-        <%= Current.user.name.first.upcase %>
-      </span>
-
+    <div class="text-center d-flex align-items-center justify-content-center">
+      <%= link_to profile_path,
+                  class: "text-decoration-none" do %>
+        <div class="rounded-circle bg-danger text-white
+              d-flex align-items-center justify-content-center"
+             style="width: 45px; height: 45px;">
+          <%= Current.user.name.first.upcase %>
+        </div>
+      <% end %>
     </div>
-
     <h6 class="mb-0 text-danger">
       <%= Current.user.name %>
     </h6>
@@ -78,7 +78,7 @@
 
   <div class="offcanvas-header justify-content-center">
 
-    <%= link_to home_path,
+    <%= link_to profile_path,
                 class: "text-decoration-none" do %>
 
       <div class="rounded-circle bg-danger
