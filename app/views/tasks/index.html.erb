@@ -221,7 +221,6 @@
                                   method: :delete,
                                   title: "delete task",
                                   data: {
-                                    turbo_confirm: "Are you sure you want to delete this task?",
                                     bs_toggle: "tooltip",
                                     bs_placement: "bottom"
                                   },
@@ -237,7 +236,6 @@
                                     aria:{disabled: true},
                                     tabindex: (policy(task).destroy? ? nil : -1),
                                     data: {
-                                      turbo_confirm: "Are you sure you want to delete this task?",
                                       bs_toggle: "tooltip",
                                       bs_placement: "bottom"
                                     },
