@@ -7,4 +7,6 @@ class Task < ApplicationRecord
   validates :priority, presence: true, inclusion: { in: %w(low medium high) }
   validates :status, presence: true, inclusion: { in: %w(completed in-progress pending) }
   validates :assign_to, presence: true
+  scope :task_status, ->(status) { where(status: status) }
+  scope :task_priority, ->(priority) {where(priority: priority) }
 end

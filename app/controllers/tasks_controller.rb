@@ -6,11 +6,11 @@ class TasksController < ApplicationController
     @task = @project.tasks
 
     if params[:priority].present?
-      @task= @task.where(priority: params[:priority])
+      @task= @task.task_priority(params[:priority])
     end
 
     if params[:status].present?
-      @task = @task.where(status: params[:status])
+      @task = @task.task_status(params[:status])
     end
   end
   def new
