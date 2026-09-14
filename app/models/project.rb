@@ -5,8 +5,9 @@ class Project < ApplicationRecord
   validates :description, presence: true, length:{minimum:5,maximum: 500}
   before_save :before_save_message
   after_save :after_save_message
-  private
+  scope :search_project, ->(search){ where("name LIKE ?", "%#{search}%")}
 
+  private
   def before_save_message
     Rails.logger.info "Before project saved"
   end
