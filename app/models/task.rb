@@ -9,4 +9,6 @@ class Task < ApplicationRecord
   validates :assign_to, presence: true
   scope :task_status, ->(status) { where(status: status) }
   scope :task_priority, ->(priority) {where(priority: priority) }
+  scope :task_assign,->(assign_to){where(assign_to: assign_to)}
+  scope :search_tasks, ->(search){where("tittle LIKE ?", "%#{search}%")}
 end

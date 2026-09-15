@@ -3,6 +3,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :check_project_owner, only: [:new, :create]
   def index
+    @users = User.all
     @task = @project.tasks
 
     if params[:priority].present?
@@ -11,6 +12,12 @@ class TasksController < ApplicationController
 
     if params[:status].present?
       @task = @task.task_status(params[:status])
+    end
+    if params[:assign_to_id].present?
+      @task = @task.task_assign(params[:assign_to_id])
+    end
+    if params[:search].present?
+      @task =  @task.search_tasks(params[:search])
     end
   end
   def new
