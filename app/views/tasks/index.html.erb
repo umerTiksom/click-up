@@ -147,52 +147,12 @@
 
 
                 <td>
-
-                  <% if task.priority == "high" %>
-
-                  <span class="badge bg-danger">
-                    High
-                  </span>
-
-                  <% elsif task.priority == "medium" %>
-
-                  <span class="badge bg-warning text-dark">
-                    Medium
-                  </span>
-
-                  <% elsif task.priority == "low" %>
-
-                  <span class="badge bg-success">
-                    Low
-                  </span>
-
-                  <% end %>
-
+                  <%= task_priority_badge(task) %>
                 </td>
 
 
                 <td>
-
-                  <% if task.status == "completed" %>
-
-                  <span class="badge bg-success">
-                    Completed
-                  </span>
-
-                  <% elsif task.status == "in-progress" %>
-
-                  <span class="badge bg-warning text-dark">
-                    In Progress
-                  </span>
-
-                  <% elsif task.status == "pending" %>
-
-                  <span class="badge bg-secondary">
-                    Pending
-                  </span>
-
-                  <% end %>
-
+                  <%= task_status_badge(task) %>
                 </td>
 
 
