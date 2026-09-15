@@ -5,13 +5,15 @@ class Project < ApplicationRecord
   validates :description, presence: true, length:{minimum:5,maximum: 500}
   before_save :before_save_message
   after_save :after_save_message
+
   scope :search_project, ->(search){ where("name LIKE ?", "%#{search}%")}
+
   scope :left_joins_project, ->(user){
     left_joins(:tasks).where("projects.user_id = :user_id OR tasks.assign_to_id = :user_id", user_id: user.id)
                       .distinct
   }
   scope :show_specific_project, ->(user,project_id){
-    left_joins(:tasks).where("project.id = :project_id AND (projects.user_id = :user_id OR tasks.assign_to_id = :user_id)",projects_id: project_id,user_id: user.id).distinct
+    left_joins(:tasks).where("projects.id= :project_id AND (projects.user_id = :user_id OR tasks.assign_to_id = :user_id)",project_id: project_id,user_id: user.id).distinct
   }
   private
   def before_save_message

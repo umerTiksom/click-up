@@ -156,6 +156,7 @@
     <orderEntry type="library" scope="PROVIDED" name="websocket (v1.2.11, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="websocket-driver (v0.8.2, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="websocket-extensions (v0.1.5, mise: 3.4.10) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="will_paginate (v4.0.1, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="xpath (v3.2.0, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="zeitwerk (v2.8.3, mise: 3.4.10) [gem]" level="application" />
   </component>

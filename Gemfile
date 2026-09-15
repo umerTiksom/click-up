@@ -4,7 +4,7 @@ source "https://rubygems.org"
 gem "rails", "~> 8.1.3", ">= 8.1.3.1"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
-
+gem 'will_paginate', '~> 4.0'
 gem "pundit", "~> 2.5"
 gem "letter_opener"
 # Use postgresql as the database for Active Record

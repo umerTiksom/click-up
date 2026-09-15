@@ -1,10 +1,11 @@
 class ProjectsController < ApplicationController
   def index
-    @project = Project.left_joins_project(Current.user).order(created_at: :asc)
 
+    @project = Project.left_joins_project(Current.user).order(created_at: :asc)
     if params[:search].present?
       @project = @project.search_project(params[:search])
     end
+    @project = @project.paginate(page: params[:page], per_page: 4)
   end
   def create
     @project = Current.user.projects.new(project_params)
