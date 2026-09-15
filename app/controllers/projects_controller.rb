@@ -1,12 +1,6 @@
 class ProjectsController < ApplicationController
   def index
-    @project = Project
-                 .left_joins(:tasks)
-                 .where(
-                   "projects.user_id = :user_id OR tasks.assign_to_id = :user_id",
-                   user_id: Current.user.id
-                 )
-                 .distinct.order(created_at: :asc)
+    @project = Project.left_joins_project(Current.user).order(created_at: :asc)
 
     if params[:search].present?
       @project = @project.search_project(params[:search])
@@ -22,16 +16,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project
-                 .left_joins(:tasks)
-                 .where(
-                   "projects.id = :project_id AND
-       (projects.user_id = :user_id OR tasks.assign_to_id = :user_id)",
-                   project_id: params[:id],
-                   user_id: Current.user.id
-                 )
-                 .distinct
-                 .first!
+    @project = Project.show_specific_project(Current.user, params[:id]).first!
     authorize @project
     @tasks = @project.tasks
   end
