@@ -6,7 +6,7 @@ class Project < ApplicationRecord
   before_save :before_save_message
   after_save :after_save_message
 
-  scope :search_project, ->(search){ where("name LIKE ?", "%#{search}%")}
+  scope :search_project, ->(search){ where("name LIKE ?", "%#{search}%") if search.present? }
 
   scope :left_joins_project, ->(user){
     left_joins(:tasks).where("projects.user_id = :user_id OR tasks.assign_to_id = :user_id", user_id: user.id)
