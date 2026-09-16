@@ -8,6 +8,8 @@ class ProjectsController < ApplicationController
   def create
     @project = Current.user.projects.new(project_params)
     if @project.save
+      ProjectCreatedJob.perform_later(@project)
+      flash[:notice] = "Project created!"
       redirect_to projects_path, notice: "Project created successfully."
     else
       render :new, status: :unprocessable_entity
