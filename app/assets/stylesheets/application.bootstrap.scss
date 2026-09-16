@@ -1,6 +1,8 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
 $font-family-sans-serif: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+
 .create-project-btn {
   background-color: #dc3545;
   transition: 0.2s;
@@ -10,8 +12,7 @@ $font-family-sans-serif: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI"
   background-color: #890808;
 }
 
-nav
-{
+nav {
   background-color: #0dcaf0;
 }
 
@@ -33,4 +34,54 @@ nav
     display: none !important;
   }
 
+}
+
+.pagination {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.pagination a,
+.pagination span,
+.pagination em {
+  display: inline-flex !important;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 40px;
+  height: 40px;
+  padding: 0 12px;
+
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+
+  background-color: #fff;
+  color: #dc3545;
+
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.pagination a:hover {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: #fff;
+}
+
+.pagination .current {
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+  color: #fff !important;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.pagination .disabled {
+  background-color: #f8f9fa !important;
+  color: #adb5bd !important;
+  cursor: not-allowed;
 }

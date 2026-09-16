@@ -5,20 +5,12 @@ class TasksController < ApplicationController
   def index
     @users = User.all
     @task = @project.tasks
-
-    if params[:priority].present?
-      @task= @task.task_priority(params[:priority])
-    end
-
-    if params[:status].present?
-      @task = @task.task_status(params[:status])
-    end
-    if params[:assign_to_id].present?
-      @task = @task.task_assign(params[:assign_to_id])
-    end
-    if params[:search].present?
-      @task =  @task.search_tasks(params[:search])
-    end
+                    .task_priority(params[:priority])
+                    .task_status(params[:status])
+                    .task_assign(params[:assign_to_id])
+                    .search_tasks(params[:search])
+                   .includes(:assign_to, :project)
+                   .paginate(page: params[:page], per_page: 6)
   end
   def new
     @task = @project.tasks.new

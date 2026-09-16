@@ -7,8 +7,9 @@ class Task < ApplicationRecord
   validates :priority, presence: true, inclusion: { in: %w(low medium high) }
   validates :status, presence: true, inclusion: { in: %w(completed in-progress pending) }
   validates :assign_to, presence: true
-  scope :task_status, ->(status) { where(status: status) }
-  scope :task_priority, ->(priority) {where(priority: priority) }
-  scope :task_assign,->(assign_to){where(assign_to: assign_to)}
-  scope :search_tasks, ->(search){where("tittle LIKE ?", "%#{search}%")}
+  scope :task_status, ->(status) { where(status: status) if status.present? }
+  scope :task_priority, ->(priority) {where(priority: priority) if priority.present? }
+  scope :task_assign,->(assign_to){where(assign_to: assign_to) if assign_to.present? }
+  scope :search_tasks, ->(search){where("tittle LIKE ?", "%#{search}%") if search.present? }
+
 end
