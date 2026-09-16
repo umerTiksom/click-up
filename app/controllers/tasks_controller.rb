@@ -24,6 +24,7 @@ class TasksController < ApplicationController
 
     @task.assign_attributes(task_params)
     if @task.save
+      TaskMailer.with(task:@task).task_assigned.deliver_now
       redirect_to project_path(@project),
                   notice: "Task created successfully."
     else
@@ -43,6 +44,9 @@ class TasksController < ApplicationController
   def update
     authorize @task
     if @task.update(task_params)
+      if @task.saved_change_to_assign_to_id?
+        TaskMailer.with(task: @task).task_assigned.deliver_now
+      end
       if @task.status == 'completed'
         TaskCompletedJob.perform_later(@task)
         flash[:notice] = "Task completed successfully."

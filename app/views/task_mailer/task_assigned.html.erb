@@ -1,0 +1,62 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+
+      <div class="card shadow-sm">
+        <div class="card-body p-4">
+
+          <h2 class="text-danger mb-4">
+            Task Assigned to You
+          </h2>
+
+          <p class="mb-3">
+            Hello <strong><%= @user.name %></strong>,
+          </p>
+
+          <p class="mb-4">
+            A new task has been assigned to you.
+          </p>
+
+          <div class="bg-light rounded p-4 mb-4">
+
+            <p class="mb-3">
+              <strong>Task:</strong>
+              <%= @task.tittle %>
+            </p>
+
+            <p class="mb-3">
+              <strong>Project:</strong>
+              <%= @task.project.name %>
+            </p>
+
+            <p class="mb-3">
+              <strong>Priority:</strong>
+              <span class="badge bg-danger">
+                <%= @task.priority %>
+              </span>
+            </p>
+
+            <p class="mb-0">
+              <strong>Status:</strong>
+              <span class="badge bg-secondary">
+                <%= @task.status %>
+              </span>
+            </p>
+
+          </div>
+
+          <p class="mb-4">
+            Please login to ClickUp to view this task.
+          </p>
+
+          <p class="mb-0">
+            Thanks,<br>
+            <strong>ClickUp Team</strong>
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
