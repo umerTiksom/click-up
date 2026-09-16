@@ -93,6 +93,19 @@
   </div>
 
   <% if @task.any? %>
+    <% if flash.any? %>
+      <% flash.each do |type, msg| %>
+        <div class="alert alert-<%= type == 'notice' ? 'success' : 'danger' %> alert-dismissible fade show"
+             role="alert">
+          <%= msg %>
+
+          <button type="button"
+                  class="btn-close"
+                  data-bs-dismiss="alert"
+                  aria-label="Close"></button>
+        </div>
+      <% end %>
+    <% end %>
 
     <div class="card border-0 shadow-sm">
 

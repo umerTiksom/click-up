@@ -43,6 +43,10 @@ class TasksController < ApplicationController
   def update
     authorize @task
     if @task.update(task_params)
+      if @task.status == 'completed'
+        TaskCompletedJob.perform_later(@task)
+        flash[:notice] = "Task completed successfully."
+      end
       redirect_to project_tasks_path(@project), notice: "Task updated successfully."
     else
       @users = User.all
