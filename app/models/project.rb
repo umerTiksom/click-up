@@ -5,7 +5,7 @@ class Project < ApplicationRecord
   validates :description, presence: true, length:{minimum:5,maximum: 500}
   before_save :before_save_message
   after_save :after_save_message
-
+  has_one_attached :project_logo
   scope :search_project, ->(search){ where("name LIKE ?", "%#{search}%") if search.present? }
 
   scope :left_joins_project, ->(user){

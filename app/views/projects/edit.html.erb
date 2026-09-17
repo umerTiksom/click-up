@@ -56,6 +56,8 @@
                              class: "form-control",
                              rows: 5,
                              placeholder: "Enter project description" %>
+          <%= form.label :project_logo , "Upload Project Logo:", class:"form-label fw-bold mt-4" %>
+          <%= form.file_field :project_logo ,class:"form-control",accept:"image/*"%>
 
         </div>
 

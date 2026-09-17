@@ -12,16 +12,35 @@
   </div>
 
   <div class="text-center border-bottom border-secondary pb-4 mb-4">
+
     <div class="text-center d-flex align-items-center justify-content-center">
+
       <%= link_to profile_path,
                   class: "text-decoration-none" do %>
-        <div class="rounded-circle bg-danger text-white
-              d-flex align-items-center justify-content-center"
-             style="width: 45px; height: 45px;">
-          <%= Current.user.name.first.upcase %>
-        </div>
+
+        <% if Current.user.avatar.attached? %>
+          <%= image_tag Current.user.avatar,
+                        class: "rounded-circle",
+
+
+                        style: "object-fit: cover; width: 60px; height: 60px",
+                        alt: Current.user.name %>
+        <% else %>
+
+          <div class="rounded-circle bg-danger text-white
+                      d-flex align-items-center justify-content-center"
+               style="width: 45px; height: 45px;">
+
+            <%= Current.user.name.first.upcase %>
+
+          </div>
+
+        <% end %>
+
       <% end %>
+
     </div>
+
     <h6 class="mb-0 text-danger">
       <%= Current.user.name %>
     </h6>
@@ -73,7 +92,6 @@
 </nav>
 
 <div class="offcanvas offcanvas-start d-md-none"
-
      id="mobileNavbar">
 
   <div class="offcanvas-header justify-content-center">
@@ -81,24 +99,37 @@
     <%= link_to profile_path,
                 class: "text-decoration-none" do %>
 
-      <div class="rounded-circle bg-danger
-                  d-flex align-items-center justify-content-center"
-           style="width: 55px; height: 55px;">
+      <% if Current.user.avatar.attached? %>
 
-        <span class="fw-bold fs-4 text-white">
-          <%= Current.user.name.first.upcase %>
-        </span>
+        <%= image_tag Current.user.avatar,
+                      class: "rounded-circle object-fit-cover",
+                      width: 55,
+                      height: 55,
+                      alt: Current.user.name %>
 
-      </div>
+      <% else %>
+
+        <div class="rounded-circle bg-danger
+                    d-flex align-items-center justify-content-center"
+             style="width: 55px; height: 55px;">
+
+          <span class="fw-bold fs-4 text-white">
+            <%= Current.user.name.first.upcase %>
+          </span>
+
+        </div>
+
+      <% end %>
 
     <% end %>
 
-
   </div>
+
 
   <div class="offcanvas-body">
 
     <ul class="nav flex-column gap-3">
+
       <li class="nav-item">
 
         <%= link_to home_path,

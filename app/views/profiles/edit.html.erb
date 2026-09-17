@@ -26,6 +26,8 @@
                     method: :patch do |form| %>
 
         <div class="mb-3">
+          <%= form.label :avatar, "Choose Profile Photo:", class:"form-label fw-bold"%>
+          <%= form.file_field :avatar, class: "form-control", accept: "image/*"%>
           <%= form.label :name,
                          "Full Name",
                          class: "form-label fw-semibold" %>
