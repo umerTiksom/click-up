@@ -25,19 +25,23 @@
     <div class="card-body p-4">
 
       <div class="d-flex align-items-center mb-4 flex-column flex-md-row">
-
-        <div class="rounded-circle bg-danger text-white
+        <%if Current.user.avatar.attached? %>
+        <%= image_tag Current.user.avatar, class:"rounded-circle",style: "object-fit: cover; width: 100px; height: 100px",alt: Current.user.name %>
+        <%else %>
+          <div class="rounded-circle bg-danger text-white
                     d-flex align-items-center justify-content-center p-1 me-3"
-             style="width: 80px; height: 80px; font-size: 32px;">
-          <%= @user.name.first.upcase %>
-        </div>
+               style="width: 80px; height: 80px; font-size: 32px;">
+            <%= @user.name.first.upcase %>
+          </div>
+        <% end %>
+
 
         <div>
-          <h3 class="fw-bold mb-1 fs-2 ">
+          <h3 class="fw-bold mb-1 fs-2 ms-3">
             <%= @user.name %>
           </h3>
 
-          <p class="text-black-50 mb-0">
+          <p class="text-black-50 mb-0 ms-3">
             <%= @user.email_address %>
           </p>
         </div>
