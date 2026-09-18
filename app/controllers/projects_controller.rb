@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
     end
   end
   def destroy
-    @project = Project.find(params[:id])
+    @project = Project.find(params[:project_id])
     authorize @project
     @project.destroy
 

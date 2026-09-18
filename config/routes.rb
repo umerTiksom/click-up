@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   resource :session
   resources :projects do
     resources :tasks
+    resources :project_files ,only: [:create, :destroy] do
+      member do
+        get :download
+      end
+    end
   end
 
   resource :profile, only: [:show, :edit, :update]

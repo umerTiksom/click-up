@@ -5,19 +5,15 @@
     Projects Details
   </h1>
 
-  <div class="container py-4 py-md-5 ">
+  <div class="container py-4 py-md-5 d-flex flex-column w-100 ">
 
     <div class="d-flex justify-content-between align-items-center
                 mb-4
                 flex-column flex-md-row
                 gap-4">
 
-      <div class="w-100 text-center text-md-start">
-        <% if @project.project_logo.attached? %>
-        <%= image_tag @project.project_logo,
-        class: "rounded-circle",
-        alt:"project logo"%>
-        <% end %>
+      <div class="w-100 text-center text-md-start ">
+
         <h1 class="text-danger fs-2 fs-md-1 mb-3">
           <%= @project.name %>
         </h1>
@@ -30,11 +26,11 @@
 
       <div class="d-flex
                   flex-column flex-sm-row
-                  justify-content-center
+                  justify-content-end
                   align-items-stretch
                   align-items-sm-center
                   gap-2
-                  w-100 w-md-auto ">
+                  w-100 w-md-auto  ">
 
         <%= link_to project_tasks_path(@project),
                     class: "btn btn-outline-danger" do %>
@@ -55,7 +51,61 @@
       </div>
 
     </div>
-
+    <div class="border-0 text-start ">
+        <h4 class="fw-bold text-danger">Project Files</h4>
+        <%=form_with url: project_project_files_path(@project), method: :post, multipart: true do |form| %>
+          <div>
+            <%= form.label :files, "Upload Project Files",class: "fw-semibold form-label text-secondary"%>
+            <%= form.file_field "files[]", multiple: true, class: "form-control "%>
+          </div>
+          <%= form.submit "Upload Files", class: "btn btn-danger mt-3"%>
+        <% end %>
+    </div>
+    <div class="mt-4">
+      <% if @project.files.attached? %>
+        <div class="card border-0 mt-3 w-100 ">
+          <div class="card-body">
+            <h4 class="fw-bold text-danger">Uploaded Files:</h4>
+            <% @project.files.each do |file| %>
+              <div class="border rounded mt-4">
+                <div class="d-flex justify-content-between align-items-center border-0 shadow p-3 p-md-3 flex-column flex-md-row">
+                  <div>
+                    <strong >
+                      <%= file.filename %>
+                    </strong>
+                    <div class="text-muted small">
+                      <%= file.content_type %>
+                      .
+                      <%= number_to_human_size(file.byte_size) %>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="d-flex gap-2 mt-2 mt-md-0">
+                      <%= link_to download_project_project_file_path(@project,file), class:"btn btn-sm btn-outline-danger",title:"Download" do%>
+                        <i class="bi bi-download"></i>
+                      <% end %>
+                      <%= button_to project_project_file_path(@project, file),
+                                    method: :delete,
+                                    class: "btn btn-sm btn-outline-danger",
+                                    title: "Delete" do %>
+                        <i class="bi bi-trash"></i>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% else %>
+        <div class="text-center text-muted">
+          <i class="bi bi-folder2-open fs-1"></i>
+          <p class="mt-2 mb-0">
+            No files uploaded yet.
+          </p>
+        </div>
+      <% end %>
+    </div>
   </div>
 
 </div>
