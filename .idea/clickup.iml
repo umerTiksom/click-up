@@ -50,6 +50,7 @@
     <orderEntry type="library" scope="PROVIDED" name="bootsnap (v1.25.0, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="brakeman (v8.0.6, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.3.0, mise: 3.4.10) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bullet (v8.2.0, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v2.6.9, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler-audit (v0.9.3, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="capybara (v3.40.0, mise: 3.4.10) [gem]" level="application" />
@@ -150,6 +151,7 @@
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v2.0.6, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="unicode-display_width (v3.2.0, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="unicode-emoji (v4.2.0, mise: 3.4.10) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="uniform_notifier (v1.18.0, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="uri (v1.1.1, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="useragent (v0.16.11, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="web-console (v4.3.0, mise: 3.4.10) [gem]" level="application" />

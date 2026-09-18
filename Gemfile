@@ -7,6 +7,7 @@ gem "propshaft"
 gem 'will_paginate', '~> 4.0'
 gem "pundit", "~> 2.5"
 gem "letter_opener"
+
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
@@ -62,6 +63,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "bullet"
 end
 
 group :test do
