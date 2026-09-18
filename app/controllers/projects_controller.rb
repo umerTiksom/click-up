@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
     @project = Project.left_joins_project(Current.user).order(created_at: :asc)
                       .search_project(params[:search])
                       .paginate(page: params[:page], per_page: 4)
+
   end
   def create
     @project = Current.user.projects.new(project_params)
