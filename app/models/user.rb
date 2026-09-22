@@ -9,7 +9,7 @@ class User < ApplicationRecord
            dependent: :nullify
   has_one_attached :avatar
   validates :name, presence: true
-  validates :password_digest, presence: true,length: {minimum: 6, maximum: 20}, on: :create
+  validates :password, length: { minimum: 6, maximum: 20 }, on: :create
   validates :email_address, presence: true, uniqueness: {case_sensitive: false}, format:{with: URI::MailTo::EMAIL_REGEXP}
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 

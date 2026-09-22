@@ -68,6 +68,7 @@
     <orderEntry type="library" scope="PROVIDED" name="erb (v6.0.7, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.13.1, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="et-orbi (v1.4.2, mise: 3.4.10) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faker (v3.8.0, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.17.4, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="fugit (v1.13.0, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v1.4.0, mise: 3.4.10) [gem]" level="application" />
