@@ -21,11 +21,14 @@
         Manage all your projects from here.
       </p>
     </div>
-
-    <%= link_to new_project_path,
-                class: "btn btn-danger px-4 py-2 fw-semibold" do %>
-      <i class="bi bi-plus-lg me-2"></i>
-      New Project
+    <% if Current.user.can_create_project? %>
+      <%= link_to "New Project",
+                  new_project_path,
+                  class: "btn btn-danger px-4 py-2 fw-semibold" %>
+    <% else %>
+      <%= link_to "Upgrade to Premium",
+                  premium_path,
+                  class: "btn btn-danger px-4 py-2 fw-semibold" %>
     <% end %>
   </div>
 

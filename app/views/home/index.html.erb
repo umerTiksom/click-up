@@ -1,4 +1,5 @@
-<div class="container-fluid p-4 ">
+<div class="container-fluid p-4">
+
   <% if flash.any? %>
     <% flash.each do |type, msg| %>
       <div class="alert alert-<%= type == 'notice' ? 'success' : 'danger' %> alert-dismissible fade show"
@@ -13,16 +14,95 @@
       </div>
     <% end %>
   <% end %>
-  <div class="mb-4">
-    <h1 class="fw-bold text-danger">
-      Dashboard
-    </h1>
 
-    <p class="text-secondary">
-      Welcome back, <%= Current.user.name %>
-    </p>
+  <div class="mb-4 d-flex justify-content-between align-items-start">
+
+    <div>
+      <h1 class="fw-bold text-danger">
+        Dashboard
+      </h1>
+
+      <p class="text-secondary">
+        Welcome back, <%= Current.user.name %>
+      </p>
+    </div>
+
+    <% unless Current.user.premium? %>
+      <div class="mt-2">
+        <%= link_to "Upgrade to Premium",
+                    premium_path,
+                    class: "btn btn-danger" %>
+      </div>
+    <% else %>
+      <div class="mt-2">
+        <span class="badge bg-success fs-6 p-2">
+          <i class="bi bi-star-fill me-1"></i>
+          Premium
+        </span>
+      </div>
+    <% end %>
+
   </div>
-   <div class="row g-4 mb-4">
+
+  <% unless Current.user.premium? %>
+
+    <div class="card border-0 shadow-sm mb-4 ">
+      <div class="card-body">
+
+        <div class="d-flex justify-content-between align-items-center mb-2">
+
+          <div>
+            <h6 class="fw-bold mb-1">
+              Free Plan
+            </h6>
+
+            <small class="text-secondary">
+              Project usage
+            </small>
+          </div>
+
+          <strong>
+            <%= Current.user.projects.count %> / <%= User::FREE_PROJECT_LIMIT %>
+          </strong>
+
+        </div>
+
+        <div class="progress" style="height: 8px;">
+          <div class="progress-bar bg-danger"
+               role="progressbar"
+               style="width: <%= [(Current.user.projects.count.to_f / User::FREE_PROJECT_LIMIT * 100), 100].min %>%;">
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-2">
+
+          <small class="text-secondary">
+            <%= Current.user.free_projects_remaining %>
+            projects remaining
+          </small>
+
+          <% if Current.user.projects.count >= User::FREE_PROJECT_LIMIT %>
+            <%= link_to "Upgrade to Premium",
+                        premium_path,
+                        class: "btn btn-sm btn-danger" %>
+          <% end %>
+
+        </div>
+
+      </div>
+    </div>
+
+  <% else %>
+
+    <div class="alert alert-success mb-4">
+      <i class="bi bi-check-circle me-2"></i>
+      You are on the <strong>Premium Plan</strong>.
+      You can create unlimited projects.
+    </div>
+
+  <% end %>
+
+  <div class="row g-4 mb-4">
 
     <div class="col-md-6 col-lg-3">
 
@@ -53,6 +133,7 @@
       </div>
 
     </div>
+
     <div class="col-md-6 col-lg-3">
 
       <div class="card border-1 shadow h-100">
@@ -148,6 +229,7 @@
   <div class="row g-3">
 
     <div class="ms-lg-5 col-lg-10 my-4">
+
       <div class="card border-1 shadow">
 
         <div class="card-body">
@@ -214,7 +296,7 @@
 
           <% else %>
 
-            <div class="text-center py-3 ">
+            <div class="text-center py-3">
 
               <i class="bi bi-folder-x fs-1 text-secondary"></i>
 
@@ -222,9 +304,19 @@
                 You don't have any projects yet.
               </p>
 
-              <%= link_to "Create Project",
-                          new_project_path,
-                          class: "btn btn-danger" %>
+              <% if Current.user.can_create_project? %>
+
+                <%= link_to "Create Project",
+                            new_project_path,
+                            class: "btn btn-danger" %>
+
+              <% else %>
+
+                <%= link_to "Upgrade to Premium",
+                            premium_path,
+                            class: "btn btn-danger" %>
+
+              <% end %>
 
             </div>
 
@@ -236,8 +328,7 @@
 
     </div>
 
-
-    <div class="col-lg-10  ms-lg-5">
+    <div class="col-lg-10 ms-lg-5">
 
       <div class="card border-1 shadow">
 
@@ -248,9 +339,7 @@
           </h4>
 
 
-
-
-          <div class="d-flex justify-content-between mb-3 ">
+          <div class="d-flex justify-content-between mb-3">
 
             <span>
               <i class="bi bi-check-circle text-success me-2"></i>
@@ -262,6 +351,7 @@
             </strong>
 
           </div>
+
 
           <div class="d-flex justify-content-between mb-3">
 

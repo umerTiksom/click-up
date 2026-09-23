@@ -8,6 +8,8 @@ gem 'will_paginate', '~> 4.0'
 gem "pundit", "~> 2.5"
 gem "letter_opener"
 gem 'faker'
+gem 'stripe'
+gem 'dotenv-rails', groups: [:development, :test]
 gem "rack-attack"
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"

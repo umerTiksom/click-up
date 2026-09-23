@@ -1,0 +1,35 @@
+<div class="container py-5 w-100 h-100 d-flex justify-content-center align-items-center">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+
+      <div class="card border-0 shadow-sm">
+        <div class="card-body text-center p-5">
+
+          <h2 class="fw-bold mb-3">
+            Upgrade to Premium
+          </h2>
+
+          <p class="text-muted mb-4">
+            You have reached the maximum limit of
+            <strong>12 projects</strong> on the Free plan.
+          </p>
+
+          <div class="alert alert-warning">
+            Free Plan:
+            <strong>12 projects maximum</strong>
+          </div>
+
+          <p class="text-muted">
+            Upgrade to Premium to create more projects.
+          </p>
+
+          <%= link_to "Back to Projects",
+                      projects_path,
+                      class: "btn btn-secondary mt-3" %>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

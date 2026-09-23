@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "subcriptions/new"
   get "profiles/show"
   get "profiles/edit"
   get "users/new"
@@ -14,7 +15,11 @@ Rails.application.routes.draw do
       end
     end
   end
-
+  resources :subscriptions, only: [:new, :create]
+  get "/subscription/success", to: "subscriptions#success"
+  get "/subscription/cancel", to: "subscriptions#cancel"
+  # premium routes
+  get "/premium", to: "premium#show", as: :premium
   resource :profile, only: [:show, :edit, :update]
   resources :passwords, param: :token
   get "/signup", to: "users#new"
