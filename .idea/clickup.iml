@@ -116,6 +116,7 @@
     <orderEntry type="library" scope="PROVIDED" name="raabro (v1.5.0, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="racc (v1.8.1, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v3.2.7, mise: 3.4.10) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rack-attack (v6.8.0, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-session (v2.1.2, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-test (v2.2.0, mise: 3.4.10) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rackup (v2.3.1, mise: 3.4.10) [gem]" level="application" />
@@ -341,6 +342,7 @@
       <value>file://$MODULE_DIR$/public/stylesheets</value>
     </entry>
     <entry key="test/mailers/previews">
+      <value>file://$MODULE_DIR$/spec/mailers/previews</value>
       <value>file://$MODULE_DIR$/test/mailers/previews</value>
       <value>file://$MODULE_DIR$/test/mailers/previews</value>
     </entry>

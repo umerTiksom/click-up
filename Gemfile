@@ -8,6 +8,7 @@ gem 'will_paginate', '~> 4.0'
 gem "pundit", "~> 2.5"
 gem "letter_opener"
 gem 'faker'
+gem "rack-attack"
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
