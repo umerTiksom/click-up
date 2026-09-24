@@ -1,6 +1,6 @@
-<div class="container py-5 w-100 h-100 d-flex justify-content-center align-items-center">
-  <div class="row justify-content-center">
-    <div class="col-md-10">
+<div class="container-fluid min-vh-100 d-flex justify-content-center align-items-center" style="background: linear-gradient(135deg,#b2fff2,#6f42c1)">
+  <div class="row justify-content-center ">
+    <div class="col-md-10  w-100">
 
       <div class="card border-0 shadow-sm">
         <div class="card-body text-center p-5">
@@ -14,7 +14,7 @@
             <strong>12 projects</strong> on the Free plan.
           </p>
 
-          <div class="alert alert-warning">
+          <div class="alert alert-success">
             Free Plan:
             <strong>12 projects maximum</strong>
           </div>
@@ -23,9 +23,11 @@
             Upgrade to Premium to create more projects.
           </p>
 
-          <%= link_to "Back to Projects",
-                      projects_path,
-                      class: "btn btn-secondary mt-3" %>
+          <%= button_to "Upgrade to Premium",
+                        subscriptions_path,
+                        method: :post,
+                        data: { turbo: false },
+                        class: "btn btn-danger mt-3" %>
 
         </div>
       </div>

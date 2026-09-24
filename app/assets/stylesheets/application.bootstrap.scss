@@ -11,9 +11,9 @@ $font-family-sans-serif: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI"
 .create-project-btn:hover {
   background-color: #890808;
 }
-
-nav {
-  background-color: #0dcaf0;
+.gradient_premium
+{
+  background: linear-gradient(135deg, #dc3545, #6f42c1) !important;
 }
 
 @media (max-width: 769px) {

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get "subcriptions/new"
+  get "stripe_webhooks/create"
+  get "subscriptions/new"
   get "profiles/show"
   get "profiles/edit"
   get "users/new"
@@ -15,11 +16,16 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :subscriptions, only: [:new, :create]
-  get "/subscription/success", to: "subscriptions#success"
-  get "/subscription/cancel", to: "subscriptions#cancel"
+
   # premium routes
   get "/premium", to: "premium#show", as: :premium
+
+  # subscriptions
+  post "/subscriptions", to: "subscriptions#create", as: :subscriptions
+  get "/subscriptions/success", to: "subscriptions#success", as: :subscription_success
+
+  # weebhook
+  post "/stripe/webhook", to: "stripe_webhook#create", as: :stripe_webhook
   resource :profile, only: [:show, :edit, :update]
   resources :passwords, param: :token
   get "/signup", to: "users#new"

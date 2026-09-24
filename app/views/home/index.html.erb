@@ -28,20 +28,12 @@
     </div>
 
     <% unless Current.user.premium? %>
-      <div class="mt-2">
+      <div class="mt-md-2 mt-1 ms-3 ms-md-0">
         <%= link_to "Upgrade to Premium",
                     premium_path,
-                    class: "btn btn-danger" %>
-      </div>
-    <% else %>
-      <div class="mt-2">
-        <span class="badge bg-success fs-6 p-2">
-          <i class="bi bi-star-fill me-1"></i>
-          Premium
-        </span>
+                    class: "btn text-white p-3 fw-semibold border-0 text-opacity-75", style:"background: linear-gradient(135deg, #e80000, #c5831b)" %>
       </div>
     <% end %>
-
   </div>
 
   <% unless Current.user.premium? %>
@@ -67,7 +59,7 @@
 
         </div>
 
-        <div class="progress" style="height: 8px;">
+        <div class="progress" style="height: 7px;">
           <div class="progress-bar bg-danger"
                role="progressbar"
                style="width: <%= [(Current.user.projects.count.to_f / User::FREE_PROJECT_LIMIT * 100), 100].min %>%;">
@@ -226,11 +218,11 @@
 
   </div>
 
-  <div class="row g-3">
+  <div class="row g-3 ">
 
-    <div class="ms-lg-5 col-lg-10 my-4">
+    <div class="ms-lg-5 col-lg-10 my-4 ">
 
-      <div class="card border-1 shadow">
+      <div class="card border-1 ms-1 ms-md-3">
 
         <div class="card-body">
 
@@ -330,7 +322,7 @@
 
     <div class="col-lg-10 ms-lg-5">
 
-      <div class="card border-1 shadow">
+      <div class="card border-1 shadow ms-md-3 ms-1">
 
         <div class="card-body">
 
