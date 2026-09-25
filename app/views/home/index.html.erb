@@ -40,7 +40,7 @@
         <%= button_to "Cancel Plan",
                       cancel_subscription_path,
                       method: :post,
-                      class: "btn btn-danger",
+                      class: "btn btn-danger p-3 fw-semibold border-0",
                       data: {
                         turbo_confirm: "Are you sure you want to cancel your subscription?"
                       } %>
@@ -51,14 +51,14 @@
 
       <%= link_to "Upgrade to Premium",
                   premium_path,
-                  class: "btn btn-primary" %>
+                  class: "btn border-0 p-3 fw-semibold text-white hover-shadow",style: "background: linear-gradient(135deg, #ed0a0a, #bb5cd8)" %>
 
     <% end %>
   </div>
 
   <% unless Current.user.premium? %>
 
-    <div class="card border-0 shadow-sm mb-4 ">
+    <div class="card border-0 shadow-sm mb-4">
       <div class="card-body">
 
         <div class="d-flex justify-content-between align-items-center mb-2">
@@ -105,20 +105,15 @@
     </div>
 
   <% else %>
-    <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+    <div class="alert alert-dismissible fade show mb-4 text-white" style="background: linear-gradient(145deg,#d30001,#6f42c1)" role="alert">
       <i class="bi bi-check-circle me-2"></i>
       You are on the <strong>Premium Plan</strong>.
-      You can create unlimited projects.
+      So enjoy the unlimited projects.
 
-      <button type="button"
-              class="btn-close"
-              data-bs-dismiss="alert"
-              aria-label="Close">
-      </button>
     </div>
   <% end %>
 
-  <div class="row g-4 mb-4">
+  <div class="row g-4 mb-4 ">
 
     <div class="col-md-6 col-lg-3">
 
@@ -242,7 +237,7 @@
 
   </div>
 
-  <div class="row g-3 ">
+  <div class="row g-3 d-flex justify-content-center align-items-center">
 
     <div class="ms-lg-5 col-lg-10 my-4 ">
 

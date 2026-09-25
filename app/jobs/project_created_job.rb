@@ -4,7 +4,6 @@ class ProjectCreatedJob < ApplicationJob
   def perform(project)
     if project.save
       user = project.user
-      puts "Project #{project.name} created successfully"
       puts "Project is created by #{user.name}"
 
     end

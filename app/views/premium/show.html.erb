@@ -1,34 +1,198 @@
-<div class="container-fluid min-vh-100 d-flex justify-content-center align-items-center" style="background: linear-gradient(135deg,#b2fff2,#6f42c1)">
-  <div class="row justify-content-center ">
-    <div class="col-md-10  w-100">
+<div class="container-fluid min-vh-100 py-5 d-flex justify-content-center align-items-center w-100"
+     style="background: linear-gradient(135deg,#b2fff2,#6f42c1)">
 
-      <div class="card border-0 shadow-sm">
-        <div class="card-body text-center p-5">
+  <div class="container">
 
-          <h2 class="fw-bold mb-3">
-            Upgrade to Premium
-          </h2>
+    <div class="text-center mb-4">
+      <h1 class="fw-bold text-dark display-5">
+        Empower your teams to organize
+        <br class="d-none d-md-block">
+        projects, manage tasks,
+        <br class="d-none d-md-block">
+        and get work done faster.
+      </h1>
 
-          <p class="text-muted mb-4">
-            You have reached the maximum limit of
-            <strong>12 projects</strong> on the Free plan.
-          </p>
+      <p class="fw-medium fs-5 text-white mb-0">
+        Trusted by over 16 million users and 280,000 companies worldwide.
+      </p>
+    </div>
 
-          <div class="alert alert-success">
-            Free Plan:
-            <strong>12 projects maximum</strong>
+    <div class="row g-4 justify-content-center h-100 "">
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card bg-white h-100 shadow-sm">
+          <div class="card-body p-4">
+
+            <h4 class="fs-3">Free</h4>
+
+            <p class="text-secondary">
+              Make free projects up to 5
+            </p>
+
+            <h1>Free</h1>
+
+            <small class="text-secondary">
+              for the lifetime
+            </small>
+
+            <div class="w-100 mt-3">
+              <%= link_to "Free",
+                          home_path,
+                          class: "btn btn-primary p-3 fw-semibold fs-5 text-white w-100 border-0" %>
+            </div>
+
+            <hr class="border-secondary border-1 mt-4">
+
+            <div class="mt-4">
+              <small class="fs-6 fw-semibold">
+                Features you love
+              </small>
+
+              <ul class="list-unstyled mt-3 mb-0">
+
+                <li class="d-flex align-items-center gap-2">
+                  <i class="bi bi-check fs-4 text-primary"></i>
+                  <p class="mb-0">Unlimited file uploads</p>
+                </li>
+
+                <li class="d-flex align-items-center gap-2">
+                  <i class="bi bi-check fs-4 text-primary"></i>
+                  <p class="mb-0">
+                    Optimized dotLottie & JSON formats
+                  </p>
+                </li>
+
+                <li class="d-flex align-items-center gap-2">
+                  <i class="bi bi-check fs-4 text-primary"></i>
+                  <p class="mb-0">
+                    Embed animations anywhere
+                  </p>
+                </li>
+
+              </ul>
+            </div>
+
           </div>
+        </div>
+      </div>
 
-          <p class="text-muted">
-            Upgrade to Premium to create more projects.
-          </p>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card bg-white h-100 shadow-sm">
+          <div class="card-body p-4">
 
-          <%= button_to "Upgrade to Premium",
-                        subscriptions_path,
-                        method: :post,
-                        data: { turbo: false },
-                        class: "btn btn-danger mt-3" %>
+            <h4 class="fs-3">Pro</h4>
 
+            <p class="text-secondary">
+              Make unlimited projects
+            </p>
+
+            <h1>$20.00</h1>
+
+            <small class="text-secondary">
+              Per user / month, billed annually.
+            </small>
+
+            <div class="w-100 mt-3">
+              <%= button_to "Upgrade to Pro",
+                            subscriptions_path,
+                            method: :post,
+                            data: { turbo: false },
+                            class: "btn btn-success p-3 fw-semibold fs-5 text-white border-0 w-100",
+                            form_class: "w-100" %>
+            </div>
+
+            <hr class="border-secondary border-1 mt-4">
+
+            <div class="mt-4">
+              <small class="fs-6 fw-semibold">
+                Features you love
+              </small>
+
+              <ul class="list-unstyled mt-3 mb-0">
+
+                <li class="d-flex align-items-center gap-2">
+                  <i class="bi bi-check fs-4 text-success"></i>
+                  <p class="mb-0">Unlimited file uploads</p>
+                </li>
+
+                <li class="d-flex align-items-center gap-2">
+                  <i class="bi bi-check fs-4 text-success"></i>
+                  <p class="mb-0">
+                    Optimized dotLottie & JSON formats
+                  </p>
+                </li>
+
+                <li class="d-flex align-items-center gap-2">
+                  <i class="bi bi-check fs-4 text-success"></i>
+                  <p class="mb-0">
+                    Embed animations anywhere
+                  </p>
+                </li>
+
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card bg-white h-100 shadow-sm">
+          <div class="card-body p-4">
+
+            <h4 class="fs-3">Ultra</h4>
+
+            <p class="text-secondary">
+              Make unlimited projects
+            </p>
+
+            <h1>$20.00</h1>
+
+            <small class="text-secondary">
+              Per user / month, billed annually.
+            </small>
+
+            <div class="w-100 mt-3">
+              <%= button_to "Upgrade to Ultra",
+                            subscriptions_path,
+                            method: :post,
+                            data: { turbo: false },
+                            class: "btn btn-dark p-3 fw-semibold fs-5 text-white border-0 w-100",
+                            form_class: "w-100" %>
+            </div>
+
+            <hr class="border-secondary border-1 mt-4">
+
+            <div class="mt-4">
+              <small class="fs-6 fw-semibold">
+                Features you love
+              </small>
+
+              <ul class="list-unstyled mt-3 mb-0">
+
+                <li class="d-flex align-items-center gap-2">
+                  <i class="bi bi-check fs-4 text-dark"></i>
+                  <p class="mb-0">Unlimited file uploads</p>
+                </li>
+
+                <li class="d-flex align-items-center gap-2">
+                  <i class="bi bi-check fs-4 text-dark"></i>
+                  <p class="mb-0">
+                    Optimized dotLottie & JSON formats
+                  </p>
+                </li>
+
+                <li class="d-flex align-items-center gap-2">
+                  <i class="bi bi-check fs-4 text-dark"></i>
+                  <p class="mb-0">
+                    Embed animations anywhere
+                  </p>
+                </li>
+
+              </ul>
+            </div>
+
+          </div>
         </div>
       </div>
 

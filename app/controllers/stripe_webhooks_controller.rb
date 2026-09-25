@@ -117,20 +117,4 @@ class StripeWebhooksController < ApplicationController
   def handle_invoice_paid(invoice)
     Rails.logger.info "Invoice paid successfully!"
   end
-
-  def handle_invoice_payment_failed(invoice)
-    subscription_id = invoice.subscription
-
-    user = User.find_by(
-      stripe_subcription_id: subscription_id
-    )
-
-    return unless user
-
-    user.update!(
-      subcription_status: "payment_failed"
-    )
-
-    Rails.logger.info "Subscription payment failed!"
-  end
 end

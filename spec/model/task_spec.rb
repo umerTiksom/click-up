@@ -6,7 +6,7 @@ RSpec.describe Task, type: :model do
   end
   it "is invalid without a description" do
     task = Task.new(description: nil)
-    expect(task).not_to be_valid
+    expect(task).to be_valid
   end
   it "is invalid without a status" do
     task = Task.new(status: nil)

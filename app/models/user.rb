@@ -7,7 +7,7 @@ class User < ApplicationRecord
            class_name: "Task",
            foreign_key: :assigned_to_id,
            dependent: :nullify
-  FREE_PROJECT_LIMIT = 12
+  FREE_PROJECT_LIMIT = 5
   has_one_attached :avatar
   validates :name, presence: true
   validates :password, length: { minimum: 6, maximum: 20 }, on: :create
