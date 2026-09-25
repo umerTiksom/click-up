@@ -16,6 +16,9 @@ class User < ApplicationRecord
   def premium?
     subcription_status == "active"
   end
+  def subcription_cancel?
+    subcription_status == "cancelled"
+  end
   def can_create_project?
     premium? || projects.count < FREE_PROJECT_LIMIT
   end

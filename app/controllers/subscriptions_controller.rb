@@ -18,4 +18,13 @@ class SubscriptionsController < ApplicationController
 
   def success
   end
+
+  def cancel
+    subscription = Stripe::Subscription.update(
+      Current.user.stripe_subcription_id,
+      {
+        cancel_at_period_end: true,
+      })
+    redirect_to home_path,notice: "Your subscription will be cancelled at the end of the current billing period."
+  end
 end

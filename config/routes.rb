@@ -23,9 +23,9 @@ Rails.application.routes.draw do
   # subscriptions
   post "/subscriptions", to: "subscriptions#create", as: :subscriptions
   get "/subscriptions/success", to: "subscriptions#success", as: :subscription_success
-
+  post "/subscription/cancel", to: "subscriptions#cancel", as: :cancel_subscription
   # weebhook
-  post "/stripe/webhook", to: "stripe_webhook#create", as: :stripe_webhook
+  post "/stripe/webhook", to: "stripe_webhooks#create", as: :stripe_webhook
   resource :profile, only: [:show, :edit, :update]
   resources :passwords, param: :token
   get "/signup", to: "users#new"
