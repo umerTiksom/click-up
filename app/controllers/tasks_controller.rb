@@ -24,7 +24,7 @@ class TasksController < ApplicationController
 
     @task.assign_attributes(task_params)
     if @task.save
-      TaskMailer.with(task:@task).task_assigned.deliver_now
+      TaskMailer.with(task :@task).task_assigned.deliver_now
       redirect_to project_path(@project),
                   notice: "Task created successfully."
     else
