@@ -12,7 +12,7 @@ gem 'stripe'
 gem 'dotenv-rails', groups: [:development, :test]
 gem "rack-attack"
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.1"
+gem "pg", "~> 1.7"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
